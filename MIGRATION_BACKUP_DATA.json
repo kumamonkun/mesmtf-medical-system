@@ -1,0 +1,287 @@
+{
+  "migration_info": {
+    "source_project": "adjkixrsjlragrvhynaq",
+    "target_project": "adjkixrsjlragrvhynaq (same project, schema upgrade)",
+    "migration_date": "2025-01-27",
+    "purpose": "Upgrade to complete MESMTF schema while preserving existing data"
+  },
+  "backup_data": {
+    "profiles": [
+      {
+        "id": "96649568-1866-4532-8449-c12e59201b25",
+        "email": "baloawgiven9@gmail.com",
+        "full_name": "jj",
+        "phone": null,
+        "role": "patient",
+        "specialization": null,
+        "license_number": null,
+        "created_at": "2025-09-20 15:41:46.031502+00",
+        "updated_at": "2025-09-20 15:41:46.031502+00"
+      },
+      {
+        "id": "ff4ec09d-2000-4bc2-b840-105fadff903d",
+        "email": "balowagiven8@gmail.com",
+        "full_name": "gjg",
+        "phone": null,
+        "role": "patient",
+        "specialization": null,
+        "license_number": null,
+        "created_at": "2025-09-20 15:43:30.442567+00",
+        "updated_at": "2025-09-20 15:43:30.442567+00"
+      },
+      {
+        "id": "e278bac7-3ad3-46c8-8436-2202556fb051",
+        "email": "tangiwaterson@gmail.com",
+        "full_name": "sdfsdfjio",
+        "phone": null,
+        "role": "medical_receptionist",
+        "specialization": null,
+        "license_number": null,
+        "created_at": "2025-09-20 16:01:22.426074+00",
+        "updated_at": "2025-09-20 16:01:22.426074+00"
+      },
+      {
+        "id": "f537893d-44a3-4eea-9246-3c58479c25ef",
+        "email": "jonnny@gmail.com",
+        "full_name": "john doe ",
+        "phone": null,
+        "role": "nurse",
+        "specialization": null,
+        "license_number": null,
+        "created_at": "2025-09-20 16:03:15.774466+00",
+        "updated_at": "2025-09-20 16:03:15.774466+00"
+      }
+    ],
+    "diseases": [
+      {
+        "id": "c496fdd5-4658-4a30-ae05-504633736b10",
+        "name": "Malaria",
+        "description": "A mosquito-borne infectious disease affecting humans and other animals",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "bf9d985c-6f5e-4aa2-822d-70058cbe2a01",
+        "name": "Typhoid Fever",
+        "description": "A bacterial infection due to Salmonella typhi",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      }
+    ],
+    "symptoms": [
+      {
+        "id": "4bb98990-57ef-49a7-89b0-fc69f065ccdc",
+        "name": "Abdominal pain",
+        "description": "Pain in the stomach area",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "da4a266e-3b63-4be8-b307-251ee9baec0e",
+        "name": "Vomiting",
+        "description": "Forceful expulsion of stomach contents",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "e72b70bf-d2da-4ecb-ac0a-e2b097c1d707",
+        "name": "Sore throat",
+        "description": "Pain or irritation in the throat",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "bc22e80d-29b3-4ddf-922d-97fc31077540",
+        "name": "Stomach issues",
+        "description": "General stomach discomfort",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "ee3bae80-3c35-4207-9908-f855881bd4ae",
+        "name": "Headache",
+        "description": "Pain in the head or neck area",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "0058933b-52cd-4080-beb0-8e02af454562",
+        "name": "Fatigue",
+        "description": "Extreme tiredness",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "11b1300e-6be0-47d6-920b-5b222ea601d7",
+        "name": "Cough",
+        "description": "Sudden expulsion of air from lungs",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "74d2def0-a7d5-4f61-a817-24de0b79b861",
+        "name": "Constipation",
+        "description": "Difficulty in bowel movements",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "949be240-deb2-4b2b-9bda-628c4919a32f",
+        "name": "Persistent high fever",
+        "description": "High body temperature that continues",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "ecf302c9-6ae1-405d-8b46-50a8540be5f6",
+        "name": "Chest pain",
+        "description": "Pain in the chest area",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "d80b4aa7-c017-4232-b6fa-309587d8c7fc",
+        "name": "Back pain",
+        "description": "Pain in the back",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "da30aea6-502a-4926-bedd-12e1a4ecdac7",
+        "name": "Muscle pain",
+        "description": "Pain in muscles",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "cce3c7f0-4810-439b-ae1a-fac559002150",
+        "name": "Weakness",
+        "description": "Lack of strength",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "c450efc0-f3a5-4ec9-b86e-bcf7cfc68a5a",
+        "name": "Tiredness",
+        "description": "Feeling of needing rest",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "10c11296-b52d-47c1-a6d4-fc5052b76d78",
+        "name": "Diarrhea",
+        "description": "Loose or watery bowel movements",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "6ba071b2-a246-4778-bfbe-0c88b6f4130b",
+        "name": "Sweating",
+        "description": "Excessive perspiration",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "7a5216bc-eca5-422a-a76f-55de2e62b781",
+        "name": "Rash",
+        "description": "Skin irritation or eruption",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      },
+      {
+        "id": "a3d8fdcd-2651-4eaf-b342-f4f810a3caa0",
+        "name": "Loss of appetite",
+        "description": "Reduced desire to eat",
+        "created_at": "2025-09-20 15:39:00.58789+00"
+      }
+    ],
+    "drugs": [
+      {
+        "id": "9f773b59-ffab-4be1-947c-f1d02725b509",
+        "name": "Artemether-Lumefantrine",
+        "description": "Anti-malarial medication",
+        "dosage": "20mg/120mg tablets",
+        "side_effects": "Nausea, vomiting, diarrhea",
+        "contraindications": null,
+        "stock_quantity": 100,
+        "price": "15.50",
+        "created_at": "2025-09-20 15:39:02.992707+00",
+        "updated_at": "2025-09-20 15:39:02.992707+00"
+      },
+      {
+        "id": "10cfd542-966e-4646-84d3-c63adac6307f",
+        "name": "Chloroquine",
+        "description": "Anti-malarial medication",
+        "dosage": "250mg tablets",
+        "side_effects": "Nausea, headache, blurred vision",
+        "contraindications": null,
+        "stock_quantity": 80,
+        "price": "8.75",
+        "created_at": "2025-09-20 15:39:02.992707+00",
+        "updated_at": "2025-09-20 15:39:02.992707+00"
+      },
+      {
+        "id": "443c2c8b-f003-4833-ae2f-0f40a807c9d6",
+        "name": "Quinine",
+        "description": "Anti-malarial medication",
+        "dosage": "300mg tablets",
+        "side_effects": "Tinnitus, nausea, headache",
+        "contraindications": null,
+        "stock_quantity": 60,
+        "price": "12.25",
+        "created_at": "2025-09-20 15:39:02.992707+00",
+        "updated_at": "2025-09-20 15:39:02.992707+00"
+      },
+      {
+        "id": "d93c4c60-bc35-4258-b79b-35e04a48d678",
+        "name": "Ciprofloxacin",
+        "description": "Antibiotic for typhoid",
+        "dosage": "500mg tablets",
+        "side_effects": "Nausea, diarrhea, dizziness",
+        "contraindications": null,
+        "stock_quantity": 120,
+        "price": "18.00",
+        "created_at": "2025-09-20 15:39:02.992707+00",
+        "updated_at": "2025-09-20 15:39:02.992707+00"
+      },
+      {
+        "id": "bf37db3b-9501-44c0-92e6-db7936d696da",
+        "name": "Azithromycin",
+        "description": "Antibiotic for typhoid",
+        "dosage": "250mg tablets",
+        "side_effects": "Stomach upset, diarrhea",
+        "contraindications": null,
+        "stock_quantity": 90,
+        "price": "22.50",
+        "created_at": "2025-09-20 15:39:02.992707+00",
+        "updated_at": "2025-09-20 15:39:02.992707+00"
+      },
+      {
+        "id": "e94c828b-9b04-4989-8b9c-a8785205e5cf",
+        "name": "Ceftriaxone",
+        "description": "Injectable antibiotic for severe typhoid",
+        "dosage": "1g injection",
+        "side_effects": "Pain at injection site, allergic reactions",
+        "contraindications": null,
+        "stock_quantity": 40,
+        "price": "35.00",
+        "created_at": "2025-09-20 15:39:02.992707+00",
+        "updated_at": "2025-09-20 15:39:02.992707+00"
+      },
+      {
+        "id": "50a62ef6-0eae-47d3-b83a-81e351241467",
+        "name": "Paracetamol",
+        "description": "Pain reliever and fever reducer",
+        "dosage": "500mg tablets",
+        "side_effects": "Rare: liver damage with overdose",
+        "contraindications": null,
+        "stock_quantity": 200,
+        "price": "3.25",
+        "created_at": "2025-09-20 15:39:02.992707+00",
+        "updated_at": "2025-09-20 15:39:02.992707+00"
+      },
+      {
+        "id": "617f002e-11da-4bb7-a07d-32bc81b8bb49",
+        "name": "ORS (Oral Rehydration Salts)",
+        "description": "For dehydration",
+        "dosage": "Powder sachets",
+        "side_effects": "None significant",
+        "contraindications": null,
+        "stock_quantity": 150,
+        "price": "2.50",
+        "created_at": "2025-09-20 15:39:02.992707+00",
+        "updated_at": "2025-09-20 15:39:02.992707+00"
+      }
+    ]
+  },
+  "migration_plan": {
+    "step_1": "Backup existing data (COMPLETED)",
+    "step_2": "Create new MESMTF tables alongside existing ones",
+    "step_3": "Migrate data from old schema to new schema",
+    "step_4": "Update foreign key relationships",
+    "step_5": "Drop old tables",
+    "step_6": "Test all API endpoints",
+    "step_7": "Verify data integrity"
+  }
+}
