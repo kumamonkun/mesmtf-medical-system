@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Users, UserPlus, Settings, Database, BarChart3, Shield, Activity, AlertCircle, TrendingUp } from "lucide-react"
 import { useAdminStats, useUsers } from "@/hooks/use-admin-data"
+import { PWAStatus, PWAFeatures } from "@/components/pwa/pwa-status"
 
 interface User {
   username: string
@@ -257,43 +258,52 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
           </Card>
         </div>
 
-        {/* User Statistics */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <Users className="h-5 w-5 mr-2" />
-              User Distribution
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-2xl font-bold text-blue-600">{stats?.roleCounts.patients || 0}</div>
-                <p className="text-sm text-muted-foreground">Patients</p>
-              </div>
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-2xl font-bold text-green-600">{stats?.roleCounts.doctors || 0}</div>
-                <p className="text-sm text-muted-foreground">Doctors</p>
-              </div>
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-2xl font-bold text-purple-600">{stats?.roleCounts.nurses || 0}</div>
-                <p className="text-sm text-muted-foreground">Nurses</p>
-              </div>
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-2xl font-bold text-orange-600">{stats?.roleCounts.pharmacists || 0}</div>
-                <p className="text-sm text-muted-foreground">Pharmacists</p>
-              </div>
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-2xl font-bold text-teal-600">{stats?.roleCounts.receptionists || 0}</div>
-                <p className="text-sm text-muted-foreground">Receptionists</p>
-              </div>
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-2xl font-bold text-red-600">{stats?.roleCounts.admins || 0}</div>
-                <p className="text-sm text-muted-foreground">Administrators</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        {/* User Statistics and PWA Status */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Users className="h-5 w-5 mr-2" />
+                  User Distribution
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="text-center p-4 border rounded-lg">
+                    <div className="text-2xl font-bold text-blue-600">{stats?.roleCounts.patients || 0}</div>
+                    <p className="text-sm text-muted-foreground">Patients</p>
+                  </div>
+                  <div className="text-center p-4 border rounded-lg">
+                    <div className="text-2xl font-bold text-green-600">{stats?.roleCounts.doctors || 0}</div>
+                    <p className="text-sm text-muted-foreground">Doctors</p>
+                  </div>
+                  <div className="text-center p-4 border rounded-lg">
+                    <div className="text-2xl font-bold text-purple-600">{stats?.roleCounts.nurses || 0}</div>
+                    <p className="text-sm text-muted-foreground">Nurses</p>
+                  </div>
+                  <div className="text-center p-4 border rounded-lg">
+                    <div className="text-2xl font-bold text-orange-600">{stats?.roleCounts.pharmacists || 0}</div>
+                    <p className="text-sm text-muted-foreground">Pharmacists</p>
+                  </div>
+                  <div className="text-center p-4 border rounded-lg">
+                    <div className="text-2xl font-bold text-teal-600">{stats?.roleCounts.receptionists || 0}</div>
+                    <p className="text-sm text-muted-foreground">Receptionists</p>
+                  </div>
+                  <div className="text-center p-4 border rounded-lg">
+                    <div className="text-2xl font-bold text-red-600">{stats?.roleCounts.admins || 0}</div>
+                    <p className="text-sm text-muted-foreground">Administrators</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="space-y-4">
+            <PWAStatus />
+            <PWAFeatures />
+          </div>
+        </div>
       </div>
     </DashboardLayout>
   )

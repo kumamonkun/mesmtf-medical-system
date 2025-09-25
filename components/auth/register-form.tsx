@@ -117,10 +117,10 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="grid grid-cols-2 gap-3">
         <div className="space-y-2">
-          <Label htmlFor="firstName">First Name</Label>
+          <Label htmlFor="firstName" className="text-sm">First Name</Label>
           <Input
             id="firstName"
             type="text"
@@ -128,10 +128,11 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
             value={formData.firstName}
             onChange={(e) => setFormData((prev) => ({ ...prev, firstName: e.target.value }))}
             required
+            className="h-9"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="lastName">Last Name</Label>
+          <Label htmlFor="lastName" className="text-sm">Last Name</Label>
           <Input
             id="lastName"
             type="text"
@@ -139,12 +140,13 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
             value={formData.lastName}
             onChange={(e) => setFormData((prev) => ({ ...prev, lastName: e.target.value }))}
             required
+            className="h-9"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email" className="text-sm">Email</Label>
           <Input
             id="email"
             type="email"
@@ -153,11 +155,12 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
             onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
             autoComplete="email"
             required
+            className="h-9"
           />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="phone">Phone Number</Label>
+        <Label htmlFor="phone" className="text-sm">Phone Number</Label>
         <Input
           id="phone"
           type="tel"
@@ -165,11 +168,12 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
           value={formData.phone}
           onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
           required
+          className="h-9"
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="username" className="text-sm">Username</Label>
         <Input
           id="username"
           type="text"
@@ -177,13 +181,14 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
           value={formData.username}
           onChange={(e) => setFormData((prev) => ({ ...prev, username: e.target.value }))}
           required
+          className="h-9"
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="role">Role</Label>
+        <Label htmlFor="role" className="text-sm">Role</Label>
         <Select value={formData.role} onValueChange={(value) => setFormData((prev) => ({ ...prev, role: value }))}>
-          <SelectTrigger>
+          <SelectTrigger className="h-9">
             <SelectValue placeholder="Select your role" />
           </SelectTrigger>
           <SelectContent>
@@ -198,19 +203,20 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
 
       {(formData.role === "doctor" || formData.role === "nurse") && (
         <div className="space-y-2">
-          <Label htmlFor="specialization">Specialization</Label>
+          <Label htmlFor="specialization" className="text-sm">Specialization</Label>
           <Input
             id="specialization"
             type="text"
             placeholder="e.g., Internal Medicine, Pediatrics"
             value={formData.specialization}
             onChange={(e) => setFormData((prev) => ({ ...prev, specialization: e.target.value }))}
+            className="h-9"
           />
         </div>
       )}
 
       <div className="space-y-2">
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password" className="text-sm">Password</Label>
         <div className="relative">
           <Input
             id="password"
@@ -220,6 +226,7 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
             onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
             autoComplete="new-password"
             required
+            className="h-9"
           />
           <Button
             type="button"
@@ -238,7 +245,7 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="confirmPassword">Confirm Password</Label>
+        <Label htmlFor="confirmPassword" className="text-sm">Confirm Password</Label>
         <div className="relative">
           <Input
             id="confirmPassword"
@@ -247,6 +254,7 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
             value={formData.confirmPassword}
             onChange={(e) => setFormData((prev) => ({ ...prev, confirmPassword: e.target.value }))}
             required
+            className="h-9"
           />
           <Button
             type="button"
@@ -265,17 +273,18 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="address">Address</Label>
+        <Label htmlFor="address" className="text-sm">Address</Label>
         <Textarea
           id="address"
           placeholder="Enter your full address"
           value={formData.address}
           onChange={(e) => setFormData((prev) => ({ ...prev, address: e.target.value }))}
-          rows={3}
+          rows={2}
+          className="resize-none"
         />
       </div>
 
-      <Button type="submit" className="w-full" disabled={isLoading}>
+      <Button type="submit" className="w-full h-9" disabled={isLoading}>
         {isLoading ? (
           <div className="flex items-center space-x-2">
             <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />

@@ -10,6 +10,7 @@ import { DiagnosisHistory } from "./diagnosis-history"
 import { ExpertSystemRules } from "./expert-system-rules"
 import { SimpleInterfaceSelector } from "./simple-interface-selector"
 import { SimpleAIChatbot } from "./simple-ai-chatbot"
+import { AdvancedAIChatbot } from "./advanced-ai-chatbot"
 import { Brain, Stethoscope, History, Settings, AlertTriangle, CheckCircle, Clock, MessageCircle, FileText } from "lucide-react"
 
 interface DiagnosisViewProps {
@@ -18,7 +19,7 @@ interface DiagnosisViewProps {
 
 export function DiagnosisView({ user }: DiagnosisViewProps) {
   const [activeTab, setActiveTab] = useState("checker")
-  const [selectedInterface, setSelectedInterface] = useState<'chatbot' | 'form' | null>(null)
+  const [selectedInterface, setSelectedInterface] = useState<'simple-chatbot' | 'advanced-chatbot' | 'form' | null>(null)
   const [diagnosisResult, setDiagnosisResult] = useState<any>(null)
 
   const getSidebarItems = () => {
@@ -38,7 +39,7 @@ export function DiagnosisView({ user }: DiagnosisViewProps) {
     ]
   }
 
-  const handleInterfaceSelect = (interfaceType: 'chatbot' | 'form') => {
+  const handleInterfaceSelect = (interfaceType: 'simple-chatbot' | 'advanced-chatbot' | 'form') => {
     setSelectedInterface(interfaceType)
     setDiagnosisResult(null) // Reset any previous results
   }
@@ -131,15 +132,27 @@ export function DiagnosisView({ user }: DiagnosisViewProps) {
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    {selectedInterface === 'chatbot' ? (
+                    {selectedInterface === 'simple-chatbot' ? (
                       <>
                         <div className="p-2 bg-blue-100 rounded-full">
                           <MessageCircle className="h-5 w-5 text-blue-600" />
                         </div>
                         <div>
-                          <CardTitle className="text-lg">AI Chat Assistant</CardTitle>
+                          <CardTitle className="text-lg">Simple AI Chat Assistant</CardTitle>
                           <p className="text-sm text-muted-foreground">
-                            Simple AI-powered conversation for diagnosis
+                            Basic AI-powered conversation for diagnosis
+                          </p>
+                        </div>
+                      </>
+                    ) : selectedInterface === 'advanced-chatbot' ? (
+                      <>
+                        <div className="p-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full">
+                          <Brain className="h-5 w-5 text-purple-600" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-lg">Advanced AI Assistant (GPT-4.1)</CardTitle>
+                          <p className="text-sm text-muted-foreground">
+                            Advanced AI with comprehensive medical analysis
                           </p>
                         </div>
                       </>
@@ -167,8 +180,13 @@ export function DiagnosisView({ user }: DiagnosisViewProps) {
             </Card>
 
             {/* Interface Content */}
-            {selectedInterface === 'chatbot' ? (
+            {selectedInterface === 'simple-chatbot' ? (
               <SimpleAIChatbot 
+                user={user} 
+                onDiagnosisComplete={handleDiagnosisComplete}
+              />
+            ) : selectedInterface === 'advanced-chatbot' ? (
+              <AdvancedAIChatbot 
                 user={user} 
                 onDiagnosisComplete={handleDiagnosisComplete}
               />

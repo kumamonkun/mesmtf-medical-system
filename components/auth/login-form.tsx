@@ -68,7 +68,7 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email" className="text-sm">Email</Label>
         <Input
           id="email"
           type="email"
@@ -77,11 +77,12 @@ export function LoginForm() {
           onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
           autoComplete="email"
           required
+          className="h-10"
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password" className="text-sm">Password</Label>
         <div className="relative">
           <Input
             id="password"
@@ -91,6 +92,7 @@ export function LoginForm() {
             onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
             autoComplete="current-password"
             required
+            className="h-10"
           />
           <Button
             type="button"
@@ -108,10 +110,9 @@ export function LoginForm() {
         </div>
       </div>
 
-
       <Button
         type="submit"
-        className="w-full"
+        className="w-full h-10"
         disabled={isLoading || !formData.email || !formData.password}
       >
         {isLoading ? (
@@ -128,22 +129,20 @@ export function LoginForm() {
       </Button>
 
       {/* Demo credentials */}
-      <Card className="mt-4">
-        <CardContent className="pt-4">
-          <p className="text-xs text-muted-foreground mb-2">Demo Credentials:</p>
-          <div className="text-xs space-y-1">
-            <p>
-              <strong>Email:</strong> demo@mesmtf.com
-            </p>
-            <p>
-              <strong>Password:</strong> demo123
-            </p>
-            <p className="text-muted-foreground">
-              Role will be determined by your profile
-            </p>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="mt-4 p-4 rounded-lg bg-muted/50">
+        <p className="text-sm text-muted-foreground mb-2 font-medium">Demo Credentials:</p>
+        <div className="text-sm space-y-1">
+          <p>
+            <strong>Email:</strong> demo@mesmtf.com
+          </p>
+          <p>
+            <strong>Password:</strong> demo123
+          </p>
+          <p className="text-muted-foreground">
+            Role will be determined by your profile
+          </p>
+        </div>
+      </div>
 
       {/* New user message */}
       <div className="mt-4 text-center">

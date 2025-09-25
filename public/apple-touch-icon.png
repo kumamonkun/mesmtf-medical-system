@@ -1,0 +1,8 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+    <rect width="180" height="180" rx="18" fill="#2563eb"/>
+    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" 
+          font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">
+      M
+    </text>
+    <circle cx="144" cy="36" r="18" fill="#10b981"/>
+  </svg>

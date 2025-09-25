@@ -176,7 +176,7 @@ export async function GET(
     const reviewedReports = medicalReports?.filter(report => report.status === 'reviewed').length || 0;
     const archivedReports = medicalReports?.filter(report => report.status === 'archived').length || 0;
     const confidentialReports = medicalReports?.filter(report => report.confidential).length || 0;
-    const followUpRequired = medicalReports?.filter(report => report.follow_up_required).length || 0;
+    const followUpRequiredCount = medicalReports?.filter(report => report.follow_up_required).length || 0;
     const overdueFollowUps = medicalReports?.filter(report => 
       report.follow_up_required && report.follow_up_date && new Date(report.follow_up_date) < new Date()
     ).length || 0;
@@ -219,7 +219,7 @@ export async function GET(
         reviewed: reviewedReports,
         archived: archivedReports,
         confidential: confidentialReports,
-        follow_up_required: followUpRequired,
+        follow_up_required: followUpRequiredCount,
         overdue_follow_ups: overdueFollowUps,
         abnormal_values: abnormalReports,
         report_types: reportTypeDistribution,
