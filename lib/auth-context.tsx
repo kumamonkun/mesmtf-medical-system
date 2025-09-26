@@ -1,21 +1,42 @@
+/**
+ * MESMTF Authentication Context
+ * 
+ * This file provides authentication management for the medical system.
+ * It handles:
+ * - User login/logout functionality
+ * - Role-based access control (admin, doctor, nurse, patient, etc.)
+ * - User profile management
+ * - Anonymous access for public features
+ * - Session management with Supabase
+ * 
+ * @author Ministry of Health and Social Services
+ * @version 1.0.0
+ */
+
 "use client"
 
 import { createContext, useContext, useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import type { User } from '@supabase/supabase-js'
 
+/**
+ * User Profile Interface
+ * 
+ * Defines the structure of user profiles in the medical system.
+ * Includes role-based access control for different user types.
+ */
 interface UserProfile {
-  id: string
-  email: string
-  username: string
-  first_name: string
-  last_name: string
-  phone: string
-  role: 'patient' | 'doctor' | 'nurse' | 'pharmacist' | 'receptionist' | 'admin'
-  specialization?: string
-  address?: string
-  created_at: string
-  updated_at: string
+  id: string                    // Unique user identifier
+  email: string                 // User's email address
+  username: string              // Display username
+  first_name: string            // User's first name
+  last_name: string             // User's last name
+  phone: string                 // Contact phone number
+  role: 'patient' | 'doctor' | 'nurse' | 'pharmacist' | 'receptionist' | 'admin'  // User role for access control
+  specialization?: string       // Medical specialization (for doctors)
+  address?: string              // User's address
+  created_at: string            // Account creation timestamp
+  updated_at: string            // Last update timestamp
 }
 
 interface AuthContextType {

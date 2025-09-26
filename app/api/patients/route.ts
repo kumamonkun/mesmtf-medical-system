@@ -1,3 +1,22 @@
+/**
+ * MESMTF Patients API Endpoint
+ * 
+ * This API endpoint handles patient management operations including:
+ * - Creating new patient records
+ * - Retrieving patient lists with pagination and search
+ * - Updating patient information
+ * - Deleting patient records
+ * 
+ * Security Features:
+ * - Role-based access control (admin, doctor, nurse, receptionist)
+ * - Input validation using Zod schemas
+ * - Authentication middleware
+ * - Audit logging for all operations
+ * 
+ * @author Ministry of Health and Social Services
+ * @version 1.0.0
+ */
+
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { z } from 'zod';
@@ -12,7 +31,12 @@ import {
 } from '@/lib/api/middleware';
 import { logger } from '@/lib/utils/logger';
 
-// Validation schema for patient data
+/**
+ * Patient Data Validation Schema
+ * 
+ * Defines the structure and validation rules for patient records.
+ * Ensures data integrity and medical record accuracy.
+ */
 const patientSchema = z.object({
   patient_id: z.string().min(1, 'Patient ID is required'),
   first_name: z.string().min(1, 'First name is required'),

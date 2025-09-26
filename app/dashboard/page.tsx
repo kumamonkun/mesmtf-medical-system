@@ -1,3 +1,22 @@
+/**
+ * MESMTF Dashboard Page
+ * 
+ * This is the main dashboard page that routes users to their appropriate
+ * dashboard based on their role in the medical system.
+ * 
+ * Role-based routing:
+ * - Admin: Full system management dashboard
+ * - Doctor: Medical diagnosis and patient management
+ * - Nurse: Patient care and vital signs monitoring
+ * - Pharmacist: Drug inventory and prescription management
+ * - Receptionist: Appointment scheduling and patient registration
+ * - Patient: Personal medical records and appointments
+ * - Guest: Public information and basic features
+ * 
+ * @author Ministry of Health and Social Services
+ * @version 1.0.0
+ */
+
 "use client"
 
 import { useRouter } from "next/navigation"
@@ -10,7 +29,16 @@ import { AdminDashboard } from "@/components/dashboard/admin-dashboard"
 import { GuestDashboard } from "@/components/dashboard/guest-dashboard"
 import { useAuth } from "@/lib/auth-context"
 
+/**
+ * Dashboard Page Component
+ * 
+ * Renders the appropriate dashboard based on user role.
+ * Provides role-based access control and routing.
+ * 
+ * @returns The appropriate dashboard component for the user's role
+ */
 export default function DashboardPage() {
+  // Get authentication state and user information
   const { user, profile, loading, isAnonymous } = useAuth()
   const router = useRouter()
 
