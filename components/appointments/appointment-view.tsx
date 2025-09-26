@@ -130,7 +130,6 @@ export function AppointmentView({ user }: AppointmentViewProps) {
 
     return [
       ...baseItems,
-      { icon: <Search className="h-4 w-4" />, label: "Search Appointments", href: "/search" },
       { icon: <Clock className="h-4 w-4" />, label: "Schedule Management", href: "/schedule" },
     ]
   }

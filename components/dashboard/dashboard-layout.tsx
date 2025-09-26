@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Activity, LogOut, Menu, Search, X, ArrowLeft } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 interface DashboardLayoutProps {
   user: {
@@ -63,8 +64,14 @@ export function DashboardLayout({ user, children, sidebarItems, showBackButton =
           )}
 
           <div className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity" onClick={handleLogoClick}>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <Activity className="h-5 w-5" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white shadow-sm border">
+              <Image
+                src="/logo-48706.jpg"
+                alt="MESMTF Logo"
+                width={24}
+                height={24}
+                className="rounded-md object-contain"
+              />
             </div>
             <div>
               <h1 className="text-lg font-bold">MESMTF</h1>
@@ -122,19 +129,6 @@ export function DashboardLayout({ user, children, sidebarItems, showBackButton =
               ))}
             </nav>
 
-            <div className="p-4 border-t">
-              <Card>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-sm">System Status</CardTitle>
-                </CardHeader>
-                <CardContent className="pb-2">
-                  <div className="flex items-center space-x-2">
-                    <div className="h-2 w-2 bg-green-500 rounded-full" />
-                    <span className="text-xs text-muted-foreground">Online</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </aside>
 

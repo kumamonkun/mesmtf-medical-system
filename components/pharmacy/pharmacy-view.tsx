@@ -9,7 +9,6 @@ import { Search, Plus } from "lucide-react"
 import { DrugInventory } from "./drug-inventory"
 import { PrescriptionManagement } from "./prescription-management"
 import { DrugAdministration } from "./drug-administration"
-import DrugInteractions from "./drug-interactions"
 
 export function PharmacyView() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -18,7 +17,7 @@ export function PharmacyView() {
 
   useEffect(() => {
     const tab = searchParams.get('tab')
-    if (tab && ['inventory', 'prescriptions', 'administration', 'interactions'].includes(tab)) {
+    if (tab && ['inventory', 'prescriptions', 'administration'].includes(tab)) {
       setActiveTab(tab)
     }
   }, [searchParams])
@@ -49,11 +48,10 @@ export function PharmacyView() {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="inventory">Drug Inventory</TabsTrigger>
           <TabsTrigger value="prescriptions">Prescriptions</TabsTrigger>
           <TabsTrigger value="administration">Drug Administration</TabsTrigger>
-          <TabsTrigger value="interactions">Drug Interactions</TabsTrigger>
         </TabsList>
 
         <TabsContent value="inventory">
@@ -68,9 +66,6 @@ export function PharmacyView() {
           <DrugAdministration searchTerm={searchTerm} />
         </TabsContent>
 
-        <TabsContent value="interactions">
-          <DrugInteractions />
-        </TabsContent>
       </Tabs>
     </div>
   )

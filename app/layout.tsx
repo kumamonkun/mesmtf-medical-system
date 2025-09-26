@@ -16,12 +16,6 @@ export const metadata: Metadata = {
   title: "MESMTF - Medical Expert System",
   description: "Medical Expert System for Malaria and Typhoid Fever - Ministry of Health and Social Services",
   generator: "MESMTF v1.0",
-  manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "MESMTF",
-  },
   formatDetection: {
     telephone: false,
   },
@@ -36,13 +30,6 @@ export const metadata: Metadata = {
     title: "MESMTF - Medical Expert System",
     description: "Medical Expert System for Malaria and Typhoid Fever - Ministry of Health and Social Services",
   },
-  other: {
-    "mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "default",
-    "msapplication-TileColor": "#2563eb",
-    "msapplication-config": "/browserconfig.xml",
-  },
 }
 
 export const viewport = {
@@ -50,8 +37,6 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  viewportFit: "cover",
-  themeColor: "#2563eb",
 }
 
 export default function RootLayout({
@@ -62,16 +47,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/icon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/icon-16x16.png" />
-        <meta name="theme-color" content="#2563eb" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="MESMTF" />
-        <meta name="msapplication-TileColor" content="#2563eb" />
-        <meta name="msapplication-tap-highlight" content="no" />
         
         {/* Botpress AI Diagnosis Chatbot */}
         <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>

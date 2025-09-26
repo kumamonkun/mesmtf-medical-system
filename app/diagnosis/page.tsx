@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { DiagnosisView } from "@/components/diagnosis/diagnosis-view"
 import { useAuth } from "@/lib/auth-context"
 import { Skeleton } from "@/components/ui/skeleton"
+import { BackButton } from "@/components/common/back-button"
 
 export default function DiagnosisPage() {
   const { user, profile, loading } = useAuth()
@@ -38,5 +39,14 @@ export default function DiagnosisPage() {
     loginTime: new Date().toISOString()
   }
 
-  return <DiagnosisView user={userData} />
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-2">
+        <div className="mb-2">
+          <BackButton />
+        </div>
+        <DiagnosisView user={userData} />
+      </div>
+    </div>
+  )
 }

@@ -28,6 +28,7 @@ interface AuthContextType {
   signInAnonymously: () => Promise<{ error: any }>
   signOut: () => Promise<void>
   updateProfile: (updates: Partial<UserProfile>) => Promise<{ error: any }>
+  resetPassword: (email: string) => Promise<{ error: any }>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -324,6 +325,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { error }
   }
 
+  const resetPassword = async (email: string) => {
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      })
+      return { error }
+    } catch (err) {
+      return { error: err }
+    }
+  }
+
   return (
     <AuthContext.Provider value={{
       user,
@@ -335,6 +347,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       signInAnonymously,
       signOut,
       updateProfile,
+      resetPassword,
     }}>
       {children}
     </AuthContext.Provider>

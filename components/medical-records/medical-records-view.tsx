@@ -141,7 +141,6 @@ export function MedicalRecordsView({ user }: MedicalRecordsViewProps) {
     return [
       ...baseItems,
       { icon: <Plus className="h-4 w-4" />, label: "Add Patient", href: "/add-patient" },
-      { icon: <Search className="h-4 w-4" />, label: "Search Records", href: "/search" },
       { icon: <Activity className="h-4 w-4" />, label: "Reports", href: "/reports" },
     ]
   }

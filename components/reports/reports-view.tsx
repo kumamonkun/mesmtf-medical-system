@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Search, Download, BarChart3 } from "lucide-react"
 import { MedicalReports } from "./medical-reports"
-import { StatisticalReports } from "./statistical-reports"
 import { PrescriptionReports } from "./prescription-reports"
 
 export function ReportsView() {
@@ -44,9 +43,8 @@ export function ReportsView() {
       </div>
 
       <Tabs defaultValue="medical" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="medical">Medical Reports</TabsTrigger>
-          <TabsTrigger value="statistical">Statistical Reports</TabsTrigger>
           <TabsTrigger value="prescriptions">Prescription Reports</TabsTrigger>
         </TabsList>
 
@@ -54,9 +52,6 @@ export function ReportsView() {
           <MedicalReports searchTerm={searchTerm} />
         </TabsContent>
 
-        <TabsContent value="statistical">
-          <StatisticalReports searchTerm={searchTerm} />
-        </TabsContent>
 
         <TabsContent value="prescriptions">
           <PrescriptionReports searchTerm={searchTerm} />

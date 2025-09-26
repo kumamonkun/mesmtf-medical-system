@@ -4,22 +4,17 @@ import { useState } from "react"
 import { DashboardLayout } from "@/components/dashboard/dashboard-layout"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { SymptomChecker } from "./symptom-checker"
-import { DiagnosisHistory } from "./diagnosis-history"
-import { ExpertSystemRules } from "./expert-system-rules"
 import { SimpleInterfaceSelector } from "./simple-interface-selector"
-import { SimpleAIChatbot } from "./simple-ai-chatbot"
-import { AdvancedAIChatbot } from "./advanced-ai-chatbot"
-import { Brain, Stethoscope, History, Settings, AlertTriangle, CheckCircle, Clock, MessageCircle, FileText } from "lucide-react"
+import { SimpleChatbot } from "./simple-chatbot"
+import { Brain, Stethoscope, History, Settings, AlertTriangle, CheckCircle, FileText, MessageCircle } from "lucide-react"
 
 interface DiagnosisViewProps {
   user: any
 }
 
 export function DiagnosisView({ user }: DiagnosisViewProps) {
-  const [activeTab, setActiveTab] = useState("checker")
-  const [selectedInterface, setSelectedInterface] = useState<'simple-chatbot' | 'advanced-chatbot' | 'form' | null>(null)
+  const [selectedInterface, setSelectedInterface] = useState<'chatbot' | 'form' | null>(null)
   const [diagnosisResult, setDiagnosisResult] = useState<any>(null)
 
   const getSidebarItems = () => {
@@ -39,7 +34,7 @@ export function DiagnosisView({ user }: DiagnosisViewProps) {
     ]
   }
 
-  const handleInterfaceSelect = (interfaceType: 'simple-chatbot' | 'advanced-chatbot' | 'form') => {
+  const handleInterfaceSelect = (interfaceType: 'chatbot' | 'form') => {
     setSelectedInterface(interfaceType)
     setDiagnosisResult(null) // Reset any previous results
   }
@@ -65,45 +60,6 @@ export function DiagnosisView({ user }: DiagnosisViewProps) {
           </p>
         </div>
 
-        {/* System Status */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium flex items-center">
-                <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
-                System Status
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-lg font-semibold text-green-600">Online</div>
-              <p className="text-xs text-muted-foreground">Expert system operational</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium flex items-center">
-                <Brain className="h-4 w-4 mr-2 text-blue-500" />
-                Knowledge Base
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-lg font-semibold text-blue-600">156 Rules</div>
-              <p className="text-xs text-muted-foreground">Malaria & Typhoid patterns</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm font-medium flex items-center">
-                <Clock className="h-4 w-4 mr-2 text-purple-500" />
-                Accuracy Rate
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-lg font-semibold text-purple-600">94.2%</div>
-              <p className="text-xs text-muted-foreground">Based on clinical validation</p>
-            </CardContent>
-          </Card>
-        </div>
 
         {/* Important Notice */}
         <Card className="border-amber-200 bg-amber-50">
@@ -132,27 +88,15 @@ export function DiagnosisView({ user }: DiagnosisViewProps) {
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    {selectedInterface === 'simple-chatbot' ? (
+                    {selectedInterface === 'chatbot' ? (
                       <>
                         <div className="p-2 bg-blue-100 rounded-full">
                           <MessageCircle className="h-5 w-5 text-blue-600" />
                         </div>
                         <div>
-                          <CardTitle className="text-lg">Simple AI Chat Assistant</CardTitle>
+                          <CardTitle className="text-lg">The Diagnosis Machine</CardTitle>
                           <p className="text-sm text-muted-foreground">
-                            Basic AI-powered conversation for diagnosis
-                          </p>
-                        </div>
-                      </>
-                    ) : selectedInterface === 'advanced-chatbot' ? (
-                      <>
-                        <div className="p-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full">
-                          <Brain className="h-5 w-5 text-purple-600" />
-                        </div>
-                        <div>
-                          <CardTitle className="text-lg">Advanced AI Assistant (GPT-4.1)</CardTitle>
-                          <p className="text-sm text-muted-foreground">
-                            Advanced AI with comprehensive medical analysis
+                            Chat with AI for health guidance and symptom analysis
                           </p>
                         </div>
                       </>
@@ -180,16 +124,8 @@ export function DiagnosisView({ user }: DiagnosisViewProps) {
             </Card>
 
             {/* Interface Content */}
-            {selectedInterface === 'simple-chatbot' ? (
-              <SimpleAIChatbot 
-                user={user} 
-                onDiagnosisComplete={handleDiagnosisComplete}
-              />
-            ) : selectedInterface === 'advanced-chatbot' ? (
-              <AdvancedAIChatbot 
-                user={user} 
-                onDiagnosisComplete={handleDiagnosisComplete}
-              />
+            {selectedInterface === 'chatbot' ? (
+              <SimpleChatbot user={user} />
             ) : (
               <SymptomChecker user={user} />
             )}
@@ -224,36 +160,6 @@ export function DiagnosisView({ user }: DiagnosisViewProps) {
           </div>
         )}
 
-        {/* Additional Tabs for History and Rules */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="checker">Diagnosis Tools</TabsTrigger>
-            <TabsTrigger value="history">Diagnosis History</TabsTrigger>
-            {user.role !== "patient" && <TabsTrigger value="rules">Expert System Rules</TabsTrigger>}
-          </TabsList>
-
-          <TabsContent value="checker" className="space-y-6">
-            {!selectedInterface ? (
-              <SimpleInterfaceSelector onSelectInterface={handleInterfaceSelect} user={user} />
-            ) : (
-              <div className="text-center py-8">
-                <p className="text-muted-foreground">
-                  Use the interface above to start your diagnosis
-                </p>
-              </div>
-            )}
-          </TabsContent>
-
-          <TabsContent value="history" className="space-y-6">
-            <DiagnosisHistory user={user} />
-          </TabsContent>
-
-          {user.role !== "patient" && (
-            <TabsContent value="rules" className="space-y-6">
-              <ExpertSystemRules user={user} />
-            </TabsContent>
-          )}
-        </Tabs>
       </div>
     </DashboardLayout>
   )

@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { AppointmentView } from "@/components/appointments/appointment-view"
 import { useAuth } from "@/lib/auth-context"
+import { BackButton } from "@/components/common/back-button"
 
 export default function AppointmentsPage() {
   const { user, profile, loading } = useAuth()
@@ -37,5 +38,14 @@ export default function AppointmentsPage() {
     loginTime: new Date().toISOString()
   }
 
-  return <AppointmentView user={userData} />
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-2">
+        <div className="mb-2">
+          <BackButton />
+        </div>
+        <AppointmentView user={userData} />
+      </div>
+    </div>
+  )
 }

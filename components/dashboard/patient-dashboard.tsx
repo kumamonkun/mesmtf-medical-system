@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, FileText, Heart, MessageSquare, Pill, Stethoscope, Clock, AlertCircle } from "lucide-react"
+import Image from "next/image"
 
 interface PatientDashboardProps {
   user: {
@@ -31,9 +32,22 @@ export function PatientDashboard({ user }: PatientDashboardProps) {
     <DashboardLayout user={user} sidebarItems={sidebarItems}>
       <div className="space-y-6">
         {/* Welcome Section */}
-        <div>
-          <h1 className="text-3xl font-bold text-balance">Welcome back, {user.username}</h1>
-          <p className="text-muted-foreground">Manage your health records and appointments</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-balance">Welcome back, {user.username}</h1>
+            <p className="text-muted-foreground">Manage your health records and appointments</p>
+          </div>
+          <div className="flex items-center space-x-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-sm border">
+              <Image
+                src="/logo-48706.jpg"
+                alt="MESMTF Logo"
+                width={32}
+                height={32}
+                className="rounded-md object-contain"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Quick Actions */}

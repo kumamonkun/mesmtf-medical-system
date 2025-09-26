@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { SettingsView } from "@/components/admin/settings-view"
 import { useAuth } from "@/lib/auth-context"
+import { BackButton } from "@/components/common/back-button"
 
 export default function SettingsPage() {
   const { user, profile, loading } = useAuth()
@@ -44,5 +45,14 @@ export default function SettingsPage() {
     loginTime: new Date().toISOString()
   }
 
-  return <SettingsView user={userData} />
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-2">
+        <div className="mb-2">
+          <BackButton fallbackPath="/dashboard" />
+        </div>
+        <SettingsView user={userData} />
+      </div>
+    </div>
+  )
 }

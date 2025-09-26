@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { ProfileView } from "@/components/profile/profile-view"
 import { useAuth } from "@/lib/auth-context"
+import { BackButton } from "@/components/common/back-button"
 
 export default function ProfilePage() {
   const { user, profile, loading } = useAuth()
@@ -37,5 +38,14 @@ export default function ProfilePage() {
     loginTime: new Date().toISOString()
   }
 
-  return <ProfileView user={userData} profile={profile} />
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-2">
+        <div className="mb-2">
+          <BackButton />
+        </div>
+        <ProfileView user={userData} profile={profile} />
+      </div>
+    </div>
+  )
 }

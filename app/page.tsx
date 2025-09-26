@@ -7,12 +7,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Activity, Heart, Shield, Users, LogIn, UserPlus, Eye } from "lucide-react"
+import Image from "next/image"
 import { useAuth } from "@/lib/auth-context"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { testSupabaseConnection } from "@/lib/test-supabase"
 import { useEffect } from "react"
-import { PWAInstallPrompt } from "@/components/pwa/install-prompt"
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState("login")
@@ -49,17 +49,34 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <Activity className="h-6 w-6" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-sm border">
+                <Image
+                  src="/logo-48706.jpg"
+                  alt="MESMTF Logo"
+                  width={40}
+                  height={40}
+                  className="rounded-md object-contain"
+                />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">MESMTF</h1>
                 <p className="text-sm text-muted-foreground">Medical Expert System</p>
               </div>
             </div>
-            <div className="text-right">
-              <p className="text-sm font-medium text-foreground">Ministry of Health</p>
-              <p className="text-xs text-muted-foreground">& Social Services</p>
+            <div className="flex items-center space-x-3">
+              <div className="text-right">
+                <p className="text-sm font-medium text-foreground">Ministry of Health</p>
+                <p className="text-xs text-muted-foreground">& Social Services</p>
+              </div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-sm border">
+                <Image
+                  src="/logo-ministry.jpg"
+                  alt="Ministry of Health Logo"
+                  width={32}
+                  height={32}
+                  className="rounded-md object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -187,8 +204,6 @@ export default function HomePage() {
         </div>
       </main>
 
-      {/* PWA Install Prompt */}
-      <PWAInstallPrompt />
     </div>
   )
 }

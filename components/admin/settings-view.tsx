@@ -25,7 +25,8 @@ import {
   CheckCircle,
   Server,
   Globe,
-  Lock
+  Lock,
+  Download
 } from "lucide-react"
 import { toast } from "sonner"
 

@@ -4,9 +4,9 @@ import { DashboardLayout } from "./dashboard-layout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Users, UserPlus, Settings, Database, BarChart3, Shield, Activity, AlertCircle, TrendingUp } from "lucide-react"
-import { useAdminStats, useUsers } from "@/hooks/use-admin-data"
-import { PWAStatus, PWAFeatures } from "@/components/pwa/pwa-status"
+import { Users, Settings, BarChart3, Activity, AlertCircle, TrendingUp } from "lucide-react"
+import { useAdminStats } from "@/hooks/use-admin-data"
+import Image from "next/image"
 
 interface User {
   username: string
@@ -20,14 +20,11 @@ interface AdminDashboardProps {
 
 export function AdminDashboard({ user }: AdminDashboardProps) {
   const { stats, loading: statsLoading, error: statsError } = useAdminStats()
-  const { users, loading: usersLoading, approveUser, rejectUser } = useUsers()
 
   const sidebarItems = [
     { icon: <BarChart3 className="h-4 w-4" />, label: "Overview", href: "/overview", active: true },
     { icon: <Users className="h-4 w-4" />, label: "User Management", href: "/users" },
-    { icon: <Database className="h-4 w-4" />, label: "System Data", href: "/data" },
     { icon: <Settings className="h-4 w-4" />, label: "System Settings", href: "/settings" },
-    { icon: <Shield className="h-4 w-4" />, label: "Security", href: "/security" },
     { icon: <Activity className="h-4 w-4" />, label: "System Logs", href: "/logs" },
   ]
 
@@ -61,9 +58,31 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
     <DashboardLayout user={user} sidebarItems={sidebarItems}>
       <div className="space-y-6">
         {/* Welcome Section */}
-        <div>
-          <h1 className="text-3xl font-bold text-balance">System Administration</h1>
-          <p className="text-muted-foreground">Monitor and manage the MESMTF system</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-balance">System Administration</h1>
+            <p className="text-muted-foreground">Monitor and manage the MESMTF system</p>
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-white shadow-sm border">
+              <Image
+                src="/logo-48706.jpg"
+                alt="MESMTF Logo"
+                width={48}
+                height={48}
+                className="rounded-md object-contain"
+              />
+            </div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-sm border">
+              <Image
+                src="/logo-ministry.jpg"
+                alt="Ministry Logo"
+                width={32}
+                height={32}
+                className="rounded-md object-contain"
+              />
+            </div>
+          </div>
         </div>
 
         {/* System Stats */}
@@ -115,125 +134,68 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
           </Card>
         </div>
 
-        {/* System Alerts & User Management */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <AlertCircle className="h-5 w-5 mr-2 text-amber-500" />
-                System Alerts
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="p-3 border border-amber-200 rounded-lg bg-amber-50">
+        {/* System Status */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <AlertCircle className="h-5 w-5 mr-2 text-green-500" />
+              System Status
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="p-3 border border-green-200 rounded-lg bg-green-50">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="font-medium text-green-700">System Status</p>
+                  <p className="text-sm text-muted-foreground">All systems operational</p>
+                  <p className="text-xs text-muted-foreground">Uptime: {stats?.systemUptime || 99.9}%</p>
+                </div>
+                <Badge className="bg-green-100 text-green-700">Healthy</Badge>
+              </div>
+            </div>
+            
+            <div className="p-3 border border-blue-200 rounded-lg bg-blue-50">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="font-medium text-blue-700">Active Sessions</p>
+                  <p className="text-sm text-muted-foreground">{stats?.activeSessions || 0} users currently online</p>
+                  <p className="text-xs text-muted-foreground">Real-time monitoring</p>
+                </div>
+                <Badge className="bg-blue-100 text-blue-700">Info</Badge>
+              </div>
+            </div>
+            
+            {stats?.totalUsers > 0 && (
+              <div className="p-3 border border-purple-200 rounded-lg bg-purple-50">
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="font-medium text-amber-700">Database Backup</p>
-                    <p className="text-sm text-muted-foreground">Scheduled backup completed successfully</p>
-                    <p className="text-xs text-muted-foreground">2 hours ago</p>
+                    <p className="font-medium text-purple-700">User Growth</p>
+                    <p className="text-sm text-muted-foreground">+{stats.userGrowth}% growth this month</p>
+                    <p className="text-xs text-muted-foreground">Total: {stats.totalUsers} users</p>
                   </div>
-                  <Badge className="bg-amber-100 text-amber-700">Info</Badge>
+                  <Badge className="bg-purple-100 text-purple-700">Growth</Badge>
                 </div>
               </div>
-              <div className="p-3 border border-blue-200 rounded-lg bg-blue-50">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="font-medium text-blue-700">System Update</p>
-                    <p className="text-sm text-muted-foreground">New security patches available</p>
-                    <p className="text-xs text-muted-foreground">1 day ago</p>
-                  </div>
-                  <Badge className="bg-blue-100 text-blue-700">Update</Badge>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <UserPlus className="h-5 w-5 mr-2" />
-                Recent User Registrations
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {usersLoading ? (
-                <div className="flex items-center justify-center p-4">
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-                </div>
-              ) : stats?.recentUsers && stats.recentUsers.length > 0 ? (
-                stats.recentUsers.slice(0, 3).map((user, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
-                    <div>
-                      <p className="font-medium">{user.name}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
-                        {user.specialization && ` - ${user.specialization}`}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Registered: {new Date(user.registeredAt).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <div className="flex space-x-2">
-                      <Button 
-                        size="sm" 
-                        variant="outline"
-                        onClick={() => rejectUser(user.id)}
-                      >
-                        Reject
-                      </Button>
-                      <Button 
-                        size="sm"
-                        onClick={() => approveUser(user.id)}
-                      >
-                        Approve
-                      </Button>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="text-center p-4 text-muted-foreground">
-                  No recent user registrations
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        </div>
+            )}
+          </CardContent>
+        </Card>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Card className="cursor-pointer hover:shadow-md transition-shadow">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg flex items-center">
                 <Users className="h-5 w-5 mr-2 text-primary" />
-                Manage Users
+                User Management
               </CardTitle>
-              <CardDescription>Add, edit, or remove system users</CardDescription>
+              <CardDescription>View and manage system users</CardDescription>
             </CardHeader>
             <CardContent>
               <Button 
                 className="w-full"
                 onClick={() => window.location.href = '/users'}
               >
-                User Management
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="cursor-pointer hover:shadow-md transition-shadow">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg flex items-center">
-                <Database className="h-5 w-5 mr-2 text-primary" />
-                System Data
-              </CardTitle>
-              <CardDescription>View and manage system data</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button 
-                variant="outline" 
-                className="w-full bg-transparent"
-                onClick={() => window.location.href = '/data'}
-              >
-                View Data
+                Manage Users
               </Button>
             </CardContent>
           </Card>
@@ -258,7 +220,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
           </Card>
         </div>
 
-        {/* User Statistics and PWA Status */}
+        {/* User Statistics */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <Card>
@@ -299,10 +261,6 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
             </Card>
           </div>
           
-          <div className="space-y-4">
-            <PWAStatus />
-            <PWAFeatures />
-          </div>
         </div>
       </div>
     </DashboardLayout>
