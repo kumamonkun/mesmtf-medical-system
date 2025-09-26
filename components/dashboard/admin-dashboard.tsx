@@ -1,3 +1,21 @@
+/**
+ * MESMTF Admin Dashboard Component
+ * 
+ * This component provides the main administrative interface for the medical system.
+ * It displays system-wide statistics, user management tools, and administrative
+ * controls for managing the entire MESMTF system.
+ * 
+ * Features:
+ * - System statistics and analytics
+ * - User management interface
+ * - System health monitoring
+ * - Quick access to administrative functions
+ * - Real-time data updates
+ * 
+ * @author Ministry of Health and Social Services
+ * @version 1.0.0
+ */
+
 "use client"
 
 import { DashboardLayout } from "./dashboard-layout"
@@ -8,14 +26,24 @@ import { Users, Settings, BarChart3, Activity, AlertCircle, TrendingUp } from "l
 import { useAdminStats } from "@/hooks/use-admin-data"
 import Image from "next/image"
 
+/**
+ * User Interface
+ * 
+ * Defines the structure of user data for the admin dashboard.
+ */
 interface User {
-  username: string
-  role: string
-  loginTime: string
+  username: string  // User's display name
+  role: string      // User's role in the system
+  loginTime: string // When the user logged in
 }
 
+/**
+ * Admin Dashboard Props Interface
+ * 
+ * Defines the props required for the admin dashboard component.
+ */
 interface AdminDashboardProps {
-  user: User
+  user: User  // Current admin user information
 }
 
 export function AdminDashboard({ user }: AdminDashboardProps) {
